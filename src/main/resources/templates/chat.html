@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:insert="fragments/header :: header">
+    <title>Chat</title>
+</head>
+
+<body>
+
+    <template id="self-output-template">
+        <p class="rounded rounded-lg border border-secondary m-2 text-white bg-secondary"><span class="space-thin">&nbsp;</span></p>
+    </template>
+
+    <template id="remote-output-template">
+        <p class="rounded rounded-lg border border-secondary m-2 text-white bg-danger text-right"><span class="space-thin">&nbsp;</span></p>
+    </template>
+
+    <template id="server-output-template">
+        <p class="rounded rounded-lg border border-secondary m-2 text-white bg-dark text-center"><span class="space-thin">&nbsp;</span></p>
+    </template>
+
+    <th:block th:replace="fragments/header :: websocket"></th:block>
+    <script th:src="@{/js/chat.js}"></script>
+
+    <div class="message-box border border-danger" id="message-box">
+    </div>
+
+    <div class="input-wrapper">
+        <form id="msg-form" class="m-3">
+            <div class="input-group">
+                <span class="input-group-text text text-danger">Enter message</span>
+                <input type="text" id="msg-box" name="msg-box" class="form-control" placeholder="Message..." required>
+                <span class="input-group-text text text-danger">Press <span class="space-thin">&nbsp;</span><b
+                        class="border border-danger px-2">Enter</b><span class="space-thin">&nbsp;</span> to send</span>
+            </div>
+        </form>
+    </div>
+
+    <style>
+        input,
+        select,
+        textarea {
+            color: darkred !important;
+        }
+
+        textarea:focus,
+        input:focus {
+            color: firebrick !important;
+        }
+
+        body {
+            background: black;
+            font-family: "Lucida Console", monospace;
+        }
+
+        .input-wrapper {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+        }
+
+        .message-box {
+            position: fixed;
+            bottom: 25;
+            right: 0;
+            width: 100%;
+            height: 90%;
+        }
+
+        .form-control {
+            background-color: #272a2e !important;
+            border-color: gray !important;
+        }
+
+        .input-group-text {
+            background-color: black !important;
+            border-color: gray !important;
+        }
+
+        .text-right {
+            text-align: right !important;
+        }
+
+        span.space-thin {
+            letter-spacing: 0;
+        }
+    </style>
+</body>
+
+</html>

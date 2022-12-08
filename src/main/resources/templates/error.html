@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:insert="fragments/header :: header">
+    <title>An Error Occured</title>
+</head>
+
+<body>
+    <div class="centered">
+        <h1>An Error Occured</h1>
+        <p th:text = "${userMsg}"></p>
+        <p>If this problem persists please contact the developer.</p>
+        <p th:text = "${code}" class="debug-info"></p>
+        <p th:text = "${errorMsg}" class="debug-info"></p>
+        <button onclick="location.assign('../')">Return Home</button>
+    </div>
+
+    <style>
+        /*
+        .centered {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        */
+
+        .centered {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            font-family: "Lucida Console", monospace;
+        }
+
+        .debug-info {
+            color: lightslategray;
+            
+        }
+
+        body {
+            background: whitesmoke !important;
+        }
+    </style>
+</body>
+
+</html>
